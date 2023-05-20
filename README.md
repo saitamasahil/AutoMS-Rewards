@@ -12,7 +12,7 @@ This is a userscript that automatically earns daily Microsoft Rewards points by 
 
 To use this script, you need to install a userscript manager extension for your browser, such as [Tampermonkey](https://www.tampermonkey.net/) or [Greasemonkey](https://www.greasespot.net/).
 
-Then, you can install the script from [this link](https://github.com/saitamasahil/AutoMS-Rewards/raw/main/code.js) or by copying and pasting the code into the extension.
+Then, you can install the script from [this link](https://github.com/saitamasahil/AutoMS-Rewards/raw/main/code.js) & copy paste the code into the extension.
 
 ## Usage
 
