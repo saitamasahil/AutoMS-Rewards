@@ -20,6 +20,8 @@ To use the script, simply visit the Bing website and click on the pink circular 
 
 You can use this script once per day to earn Microsoft Rewards points.
 
+> Note: Please ensure that your browser's settings allow pop-ups, otherwise this script may not function properly.
+
 ## Screenshot
 <div align="center">
     <img src="screenshot/s1.png">
