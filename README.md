@@ -6,6 +6,9 @@ This is a userscript that automatically earns daily Microsoft Rewards points by 
 
 - Adds a circular icon on the Bing page, which automatically searches for each of the 36 random words when clicked.
 - Closes all search pages automatically after 15 seconds.
+- Toggle switch to search random words from English dictionary.
+
+> Note: Keep it disabled if you wanna search predefined words available in script.
 
 ## Installation
 
@@ -15,13 +18,14 @@ Then, you can install the script from [this link](https://github.com/saitamasahi
 
 ## Usage
 
-To use the script, simply visit the Bing website and click on the pink circular icon(In Microsoft rewards section) that appears on the top left corner of the page. The script will then open 36 tabs and search for random words on each tab. After 15 seconds, all tabs will be closed automatically.
+To use the script, simply visit the Bing website and click on the pink circular icon(In Microsoft rewards section) that appears on the top left corner of the page. The script will then open 36 tabs and search for predefined words on each tab. After 15 seconds, all tabs will be closed automatically. Enable toggle switch to search random words from English dictionary.
 
 You can use this script once per day to earn Microsoft Rewards points.
 
 > Note: Please ensure that your browser's settings allow pop-ups, otherwise this script may not function properly.
 
 ## Screenshot
+
 <div align="center">
     <img src="screenshot/s1.png">
 </div>

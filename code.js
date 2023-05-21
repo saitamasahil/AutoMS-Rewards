@@ -23,19 +23,44 @@
     icon.style.cursor = 'pointer';
     icon.title = 'Search for random words';
 
-    // Search for random words when the icon is clicked
-    icon.addEventListener('click', function () {
-        const words = [
-            'car', 'cat', 'bus', 'dog', 'book', 'tree', 'cake', 'fish', 'star', 'moon',
-            'pen', 'hat', 'cup', 'box', 'ball', 'bird', 'rock', 'rose', 'soap', 'coin',
-            'key', 'map', 'pie', 'tea', 'toy', 'cow', 'egg', 'ice', 'sun', 'sky',
-            'bed', 'bag', 'jar', 'net', 'web', 'art', 'arm', 'eye', 'ear', 'leg',
-        ];
+    // Create an element to represent the toggle switch
+    const toggle = document.createElement('input');
+    toggle.type = 'checkbox';
+    toggle.style.position = 'fixed';
+    toggle.style.top = '130px';
+    toggle.style.left = '25px';
+    toggle.title = 'Use random words from English dictionary';
 
+    // Define the list of predefined words
+    const predefinedWords = [
+        'car', 'cat', 'bus', 'dog', 'book', 'tree', 'cake', 'fish', 'star', 'moon',
+        'pen', 'hat', 'cup', 'box', 'ball', 'bird', 'rock', 'rose', 'soap', 'coin',
+        'key', 'map', 'pie', 'tea', 'toy', 'cow', 'egg', 'ice', 'sun', 'sky',
+        'bed', 'bag', 'jar', 'net', 'web', 'art', 'arm', 'eye', 'ear', 'leg',
+    ];
+
+    // Define a function to get a random word from the English dictionary
+    function getRandomWord() {
+        // Fetch a random word from an online API
+        return fetch('https://random-word-api.herokuapp.com/word?number=1')
+            .then(response => response.json())
+            .then(data => data[0])
+            .catch(error => console.error(error));
+    }
+
+    // Search for random words when the icon is clicked
+    icon.addEventListener('click', async function () {
         const pages = [];
 
-        for (let i = 0; i < words.length; i++) {
-            const word = words[i];
+        for (let i = 0; i < 36; i++) {
+            let word;
+            if (toggle.checked) {
+                // Use a random word from the English dictionary
+                word = await getRandomWord();
+            } else {
+                // Use a predefined word
+                word = predefinedWords[i];
+            }
             const page = window.open(`https://bing.com/search?q=${encodeURIComponent(word)}`);
             pages.push(page);
         }
@@ -49,6 +74,7 @@
         }, 15000);
     });
 
-    // Append the icon to the document body
+    // Append the icon and the toggle to the document body
     document.body.appendChild(icon);
+    document.body.appendChild(toggle);
 })();
