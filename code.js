@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AutoMS-Rewards
-// @version      2
-// @description  This script adds a circular icon on the Bing page, which automatically searches for each of the 36 Random Words when clicked. After the search is complete, wait for 15 seconds and it close all search pages automatically.
+// @version      3
+// @description  This script adds a circular icon on the Bing page, which automatically searches for each of the 40 Random Words when clicked. After the search is complete, wait for 15 seconds and it close all search pages automatically.
 // @author       Potaper & saitamasahil
 // @match        https://www.bing.com/*
 // @updateURL    https://github.com/saitamasahil/AutoMS-Rewards/raw/main/code.js
@@ -52,7 +52,7 @@
     icon.addEventListener('click', async function () {
         const pages = [];
 
-        for (let i = 0; i < 36; i++) {
+        for (let i = 0; i < 40; i++) {
             let word;
             if (toggle.checked) {
                 // Use a random word from the English dictionary
