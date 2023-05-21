@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         AutoMS-Rewards
-// @version      1
+// @version      2
 // @description  This script adds a circular icon on the Bing page, which automatically searches for each of the 36 Random Words when clicked. After the search is complete, wait for 15 seconds and it close all search pages automatically.
 // @author       Potaper & saitamasahil
 // @match        https://www.bing.com/*
