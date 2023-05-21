@@ -27,7 +27,7 @@ You can use this script once per day to earn Microsoft Rewards points.
 ## Screenshot
 
 <div align="center">
-    <img src="screenshot/s1.png">
+    <img src="screenshot/screenshot1.png">
 </div>
 
 ## Disclaimer
