@@ -21,7 +21,7 @@
     icon.style.borderRadius = '50%';
     icon.style.backgroundColor = 'rgba(255, 192, 203, 0.6)';
     icon.style.cursor = 'pointer';
-    icon.title = 'Search for random words';
+    icon.title = 'Click here to initiate a Bing random words search';
 
     // Create an element to represent the toggle switch
     const toggle = document.createElement('input');
@@ -29,7 +29,7 @@
     toggle.style.position = 'fixed';
     toggle.style.top = '130px';
     toggle.style.left = '25px';
-    toggle.title = 'Use random words from English dictionary';
+    toggle.title = 'Check this box to perform a search with random words from the English dictionary';
 
     // Define the list of predefined words
     const predefinedWords = [
