@@ -5,6 +5,7 @@
 // @author       Potaper & saitamasahil
 // @match        https://www.bing.com/*
 // @updateURL    https://github.com/saitamasahil/AutoMS-Rewards/raw/main/code.js
+// @downloadURL  https://github.com/saitamasahil/AutoMS-Rewards/raw/main/code.js
 // @license      GPL-3.0 license 
 // ==/UserScript==
 
