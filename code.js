@@ -5,7 +5,6 @@
 // @description  This script adds a circular icon on the Bing page, which automatically searches for each of the 36 Random Words when clicked. After the search is complete, wait for 15 seconds and it close all search pages automatically.
 // @author       Potaper & saitamasahil
 // @match        https://www.bing.com/*
-// @match        https://www.bing.co.in/*
 // @license      GPL-3.0 license 
 // ==/UserScript==
 
@@ -37,7 +36,7 @@
 
         for (let i = 0; i < words.length; i++) {
             const word = words[i];
-            const page = window.open(`https://bing.co.in/search?q=${encodeURIComponent(word)}`);
+            const page = window.open(`https://bing.com/search?q=${encodeURIComponent(word)}`);
             pages.push(page);
         }
 

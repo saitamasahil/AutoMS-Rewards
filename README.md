@@ -6,7 +6,6 @@ This is a userscript that automatically earns daily Microsoft Rewards points by 
 
 - Adds a circular icon on the Bing page, which automatically searches for each of the 36 random words when clicked.
 - Closes all search pages automatically after 15 seconds.
-- Runs only on the Bing website, both the global and the Indian versions.
 
 ## Installation
 
