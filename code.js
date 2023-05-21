@@ -1,10 +1,10 @@
 // ==UserScript==
-// @name         Automatically earn daily Microsoft Rewards points (a one-time search for random words)
-// @namespace    AutoMS Rewards
+// @name         AutoMS-Rewards
 // @version      1
 // @description  This script adds a circular icon on the Bing page, which automatically searches for each of the 36 Random Words when clicked. After the search is complete, wait for 15 seconds and it close all search pages automatically.
 // @author       Potaper & saitamasahil
 // @match        https://www.bing.com/*
+// @updateURL    https://github.com/saitamasahil/AutoMS-Rewards/raw/main/code.js
 // @license      GPL-3.0 license 
 // ==/UserScript==
 
