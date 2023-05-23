@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         AutoMS-Rewards
-// @version      3
+// @version      3.1
 // @description  This script adds a circular icon on the Bing page, which automatically searches for each of the 40 Random Words when clicked. After the search is complete, wait for 15 seconds and it close all search pages automatically.
 // @author       Potaper & saitamasahil
 // @match        https://www.bing.com/*
@@ -32,6 +32,22 @@
     toggle.style.left = '25px';
     toggle.title = 'Check this box to perform a search with random words from the English dictionary';
 
+    // Create an element to represent the dropdown button
+    const dropdown = document.createElement('select');
+    dropdown.style.position = 'fixed';
+    dropdown.style.top = '170px';
+    dropdown.style.left = '20px';
+    dropdown.title = 'Select the number of searches you want to perform';
+
+    // Add options to the dropdown button
+    const options = [40, 35, 30, 25, 20, 15, 10, 5];
+    for (let i = 0; i < options.length; i++) {
+        const option = document.createElement('option');
+        option.value = options[i];
+        option.text = options[i];
+        dropdown.appendChild(option);
+    }
+
     // Define the list of predefined words
     const predefinedWords = [
         'car', 'cat', 'bus', 'dog', 'book', 'tree', 'cake', 'fish', 'star', 'moon',
@@ -53,7 +69,10 @@
     icon.addEventListener('click', async function () {
         const pages = [];
 
-        for (let i = 0; i < 40; i++) {
+        // Get the selected number of searches from the dropdown button
+        const limit = parseInt(dropdown.value);
+
+        for (let i = 0; i < limit; i++) {
             let word;
             if (toggle.checked) {
                 // Use a random word from the English dictionary
@@ -75,7 +94,8 @@
         }, 15000);
     });
 
-    // Append the icon and the toggle to the document body
+    // Append the icon, the toggle and the dropdown to the document body
     document.body.appendChild(icon);
     document.body.appendChild(toggle);
+    document.body.appendChild(dropdown);
 })();
