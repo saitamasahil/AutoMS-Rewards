@@ -1,42 +1,58 @@
 // ==UserScript==
 // @name         AutoMS-Rewards
-// @version      3.1
-// @description  This script adds a circular icon on the Bing page, which automatically searches for each of the 40 Random Words when clicked. After the search is complete, wait for 15 seconds and it close all search pages automatically.
+// @version      3.2
+// @description  This is a JavaScript code that lets you search random words on Bing using a simple user interface. It adds a circular Orange icon on Microsoft rewards section. You can choose the number of searches & source of the words(Either predefined or random words from English dictionary), and the code will open search tabs. After 15 seconds, all tabs will be closed automatically. After completing the operation, Bing Daily Rewards will be completed. This script is originally made by Potaper & I added some more features like searching random words from English dictionary & change number of searches.
 // @author       Potaper & saitamasahil
 // @match        https://www.bing.com/*
 // @updateURL    https://github.com/saitamasahil/AutoMS-Rewards/raw/main/code.js
 // @downloadURL  https://github.com/saitamasahil/AutoMS-Rewards/raw/main/code.js
-// @license      GPL-3.0 license 
+// @license      GPL-3.0 license
 // ==/UserScript==
+
 
 (function () {
     'use strict';
 
-    // Create an element to represent the circular icon
+    // Create an element to represent the circle icon
     const icon = document.createElement('div');
     icon.style.position = 'fixed';
     icon.style.top = '90px';
     icon.style.left = '20px';
     icon.style.width = '30px';
     icon.style.height = '30px';
-    icon.style.borderRadius = '50%';
-    icon.style.backgroundColor = 'rgba(255, 192, 203, 0.6)';
+    icon.style.borderRadius = '50%'; // Make it a circle
+    icon.style.backgroundColor = 'orange'; // Change the color
     icon.style.cursor = 'pointer';
     icon.title = 'Click here to initiate a Bing random words search';
 
-    // Create an element to represent the toggle switch
-    const toggle = document.createElement('input');
-    toggle.type = 'checkbox';
-    toggle.style.position = 'fixed';
-    toggle.style.top = '130px';
-    toggle.style.left = '25px';
-    toggle.title = 'Check this box to perform a search with random words from the English dictionary';
+    // Create an element to represent the container for the other options
+    const container = document.createElement('div');
+    container.style.position = 'fixed';
+    container.style.top = '130px';
+    container.style.left = '20px';
+    container.style.width = '250px';
+    container.style.height = '72px';
+    container.style.backgroundColor = 'lightcoral';
+    container.style.display = 'none'; // Hide the container by default
+
+    // Create an element to represent the search button
+    const searchButton = document.createElement('button');
+    searchButton.textContent = '🔎 Click here to search';
+    searchButton.style.margin = '6px';
+    searchButton.title = 'Click this button to start the search';
+
+    // Create an element to represent the toggle button
+    const toggleButton = document.createElement('button');
+    toggleButton.textContent = '📚 Search from dictionary';
+    toggleButton.title = 'Make this button green by clicking it to perform a search with random words from the English dictionary';
+    toggleButton.style.backgroundColor = 'white'; // Show white color by default
+    toggleButton.style.margin = '6px';
+
+    // Create a variable to store the toggle state
+    let toggleState = false;
 
     // Create an element to represent the dropdown button
     const dropdown = document.createElement('select');
-    dropdown.style.position = 'fixed';
-    dropdown.style.top = '170px';
-    dropdown.style.left = '20px';
     dropdown.title = 'Select the number of searches you want to perform';
 
     // Add options to the dropdown button
@@ -65,8 +81,8 @@
             .catch(error => console.error(error));
     }
 
-    // Search for random words when the icon is clicked
-    icon.addEventListener('click', async function () {
+    // Search for random words when the search button is clicked
+    searchButton.addEventListener('click', async function () {
         const pages = [];
 
         // Get the selected number of searches from the dropdown button
@@ -74,7 +90,7 @@
 
         for (let i = 0; i < limit; i++) {
             let word;
-            if (toggle.checked) {
+            if (toggleState) {
                 // Use a random word from the English dictionary
                 word = await getRandomWord();
             } else {
@@ -94,8 +110,32 @@
         }, 15000);
     });
 
-    // Append the icon, the toggle and the dropdown to the document body
+    // Toggle the color and the state of the toggle button when clicked
+    toggleButton.addEventListener('click', function () {
+        if (toggleState) {
+            toggleState = false;
+            toggleButton.style.backgroundColor = 'white'; // Show white color when unchecked
+        } else {
+            toggleState = true;
+            toggleButton.style.backgroundColor = 'pink'; // Show pink color when checked
+        }
+    });
+
+    // Toggle the visibility of the container when the icon is clicked
+    icon.addEventListener('click', function () {
+        if (container.style.display === "none") {
+            container.style.display = "block";
+        } else {
+            container.style.display = "none";
+        }
+    });
+
+    // Append the icon and the container to the document body
     document.body.appendChild(icon);
-    document.body.appendChild(toggle);
-    document.body.appendChild(dropdown);
+    document.body.appendChild(container);
+
+    // Append the search button, the toggle button and the dropdown to the container
+    container.appendChild(searchButton);
+    container.appendChild(toggleButton);
+    container.appendChild(dropdown);
 })();
