@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AutoMS-Rewards
 // @version      3.2
-// @description  This is a JavaScript code that lets you search random words on Bing using a simple user interface. It adds a circular Orange icon on Microsoft rewards section. You can choose the number of searches & source of the words(Either predefined or random words from English dictionary), and the code will open search tabs. After 15 seconds, all tabs will be closed automatically. After completing the operation, Bing Daily Rewards will be completed. This script is originally made by Potaper & I added some more features like searching random words from English dictionary & change number of searches.
+// @description  This lets you search random words on Bing. It adds a circular Orange icon on Microsoft rewards section. You can choose the number of searches & source of the words(Either predefined or random words from English dictionary), and the code will open search tabs. After 15 seconds, all tabs will be closed automatically. This script is originally made by Potaper & I added some more features like searching random words from English dictionary & change number of searches.
 // @author       Potaper & saitamasahil
 // @match        https://www.bing.com/*
 // @updateURL    https://github.com/saitamasahil/AutoMS-Rewards/raw/main/code.js
