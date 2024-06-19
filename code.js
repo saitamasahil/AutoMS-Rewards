@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         AutoMS-Rewards
-// @version      3.2
+// @version      3.3
 // @description  This lets you search random words on Bing. It adds a circular Orange icon on Microsoft rewards section. You can choose the number of searches & source of the words(Either predefined or random words from English dictionary), and the code will open search tabs. After 15 seconds, all tabs will be closed automatically. This script is originally made by Potaper & I added some more features like searching random words from English dictionary & change number of searches.
 // @author       Potaper & saitamasahil
 // @match        https://www.bing.com/*
@@ -8,7 +8,6 @@
 // @downloadURL  https://github.com/saitamasahil/AutoMS-Rewards/raw/main/code.js
 // @license      GPL-3.0 license
 // ==/UserScript==
-
 
 (function () {
     'use strict';
@@ -44,7 +43,7 @@
     // Create an element to represent the toggle button
     const toggleButton = document.createElement('button');
     toggleButton.textContent = '📚 Search from dictionary';
-    toggleButton.title = 'Make this button green by clicking it to perform a search with random words from the English dictionary';
+    toggleButton.title = 'Make this button highlighted by clicking it to perform a search with random words from the English dictionary';
     toggleButton.style.backgroundColor = 'white'; // Show white color by default
     toggleButton.style.margin = '6px';
 
@@ -72,13 +71,16 @@
         'bed', 'bag', 'jar', 'net', 'web', 'art', 'arm', 'eye', 'ear', 'leg',
     ];
 
-    // Define a function to get a random word from the English dictionary
-    function getRandomWord() {
-        // Fetch a random word from an online API
-        return fetch('https://random-word-api.herokuapp.com/word?number=1')
-            .then(response => response.json())
-            .then(data => data[0])
-            .catch(error => console.error(error));
+    // Define a function to get random words from the English dictionary
+    async function getRandomWords(count) {
+        try {
+            const response = await fetch(`https://random-word-api.herokuapp.com/word?number=${count}`);
+            const words = await response.json();
+            return words;
+        } catch (error) {
+            console.error('Error fetching random words:', error);
+            return [];
+        }
     }
 
     // Search for random words when the search button is clicked
@@ -88,15 +90,17 @@
         // Get the selected number of searches from the dropdown button
         const limit = parseInt(dropdown.value);
 
+        let words;
+        if (toggleState) {
+            // Use random words from the English dictionary
+            words = await getRandomWords(limit);
+        } else {
+            // Use predefined words
+            words = predefinedWords.slice(0, limit);
+        }
+
         for (let i = 0; i < limit; i++) {
-            let word;
-            if (toggleState) {
-                // Use a random word from the English dictionary
-                word = await getRandomWord();
-            } else {
-                // Use a predefined word
-                word = predefinedWords[i];
-            }
+            const word = words[i] || 'fallback'; // Use a fallback word in case of error
             const page = window.open(`https://bing.com/search?q=${encodeURIComponent(word)}`);
             pages.push(page);
         }
@@ -112,29 +116,20 @@
 
     // Toggle the color and the state of the toggle button when clicked
     toggleButton.addEventListener('click', function () {
-        if (toggleState) {
-            toggleState = false;
-            toggleButton.style.backgroundColor = 'white'; // Show white color when unchecked
-        } else {
-            toggleState = true;
-            toggleButton.style.backgroundColor = 'pink'; // Show pink color when checked
-        }
+        toggleState = !toggleState;
+        toggleButton.style.backgroundColor = toggleState ? 'pink' : 'white'; // Toggle colors
     });
 
     // Toggle the visibility of the container when the icon is clicked
     icon.addEventListener('click', function () {
-        if (container.style.display === "none") {
-            container.style.display = "block";
-        } else {
-            container.style.display = "none";
-        }
+        container.style.display = container.style.display === 'none' ? 'block' : 'none';
     });
 
     // Append the icon and the container to the document body
     document.body.appendChild(icon);
     document.body.appendChild(container);
 
-    // Append the search button, the toggle button and the dropdown to the container
+    // Append the search button, the toggle button, and the dropdown to the container
     container.appendChild(searchButton);
     container.appendChild(toggleButton);
     container.appendChild(dropdown);
