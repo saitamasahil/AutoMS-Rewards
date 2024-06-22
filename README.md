@@ -1,25 +1,31 @@
 # AutoMS Rewards
 
-This is a userscript that automatically earns daily Microsoft Rewards points by searching for random words on Bing.
+This userscript automates daily Microsoft Rewards points by searching random words or sentences on Bing.
 
 ## Features
 
-- Adds a circular icon on the Bing page, which brings a small ui. With this ui you can search for each of the words(Either enable predefined words or random words from the English dictionary) when clicked.
-- Closes all search pages automatically after 15 seconds.
-- A toggle switch to search random words from English dictionary.
-- A drpdown button to change number of searches.
+- Adds a circular icon on the Bing page, opening a UI to search for random words or sentences.
+- Automatically closes all search tabs after 15 seconds.
+- Toggle switch to search random words or sentences from the English dictionary.
+- Dropdown to change the number of searches.
 
-> Note: Untick the checkbox if you want to search predefined random words from the script.
+> Note: Deselect the random words or sentences box if you want to search predefined random words directly from the script.
 
 ## Installation
 
-To use this script, you need to install a userscript manager extension for your browser, such as [Tampermonkey](https://www.tampermonkey.net/) or [Greasemonkey](https://www.greasespot.net/).
+To use this script, you need a userscript manager extension for your browser, such as [Tampermonkey](https://www.tampermonkey.net/) or [Greasemonkey](https://www.greasespot.net/).
 
-Then, you can install the script from [this link](https://github.com/saitamasahil/AutoMS-Rewards/raw/main/code.js) & copy paste the code into the extension.
+Install the script from [this link](https://github.com/saitamasahil/AutoMS-Rewards/raw/main/code.js) and paste the code into the extension.
 
 ## Usage
 
-To use the script, simply visit the Bing website and click on the orange circular icon in Microsoft rewards section. The script will then show a small ui. You can perform different actions from there, like search for predefined random words. After 15 seconds, all tabs will be closed automatically. You can enable `Search from dictionary` option to search random words from English dictionary. You can change number of searches from drpdown button.
+1. Open MS Rewards Section and click on the orange circular icon.
+2. The script will display a UI where you can perform various actions:
+   - Search for predefined random words.
+   - Search for random words from the English dictionary.
+   - Search for random sentences.
+3. After 15 seconds, all opened search tabs will close automatically. There is a delay of 5 seconds after each search to simulate human-like behavior and avoid triggering automated detection mechanisms.
+4. You can change the number of searches using the dropdown button.
 
 You can use this script once per day to earn Microsoft Rewards points.
 
